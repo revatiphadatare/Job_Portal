@@ -3,8 +3,7 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-t5gj$fis)0ebs5zw1pn9za8^b0q@1!0f##h-1_)!5yp#b%tboq'
-
+SECRET_KEY = ' drop here your secret key'
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -88,3 +87,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'MEDIA')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
