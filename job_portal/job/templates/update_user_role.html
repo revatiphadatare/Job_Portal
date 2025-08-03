@@ -1,0 +1,18 @@
+{% extends 'admin_nav.html' %}
+{% block title %}Update User Role{% endblock %}
+{% block body %}
+
+<div class="container my-5">
+    <h3 class="text-center text-light mb-4">Update Role for {{ user.user.username }}</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <select name="type" class="form-control mb-3" required>
+            <option value="student" {% if user.type == "student" %}selected{% endif %}>Student</option>
+            <option value="admin" {% if user.type == "admin" %}selected{% endif %}>Admin</option>
+            <option value="recruiter" {% if user.type == "recruiter" %}selected{% endif %}>Recruiter</option>
+        </select>
+        <button type="submit" class="btn btn-success">Save Changes</button>
+    </form>
+</div>
+
+{% endblock %}

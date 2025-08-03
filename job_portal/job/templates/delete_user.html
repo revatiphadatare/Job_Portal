@@ -1,0 +1,17 @@
+{% extends 'admin_nav.html' %}
+{% block title %}Confirm Delete User{% endblock %}
+{% block body %}
+
+<div class="container my-5">
+    <h3 class="text-center text-light mb-4">Delete User Confirmation</h3>
+    <div class="bg-dark p-4 rounded text-white text-center">
+        <p>Are you sure you want to permanently delete the user <strong>{{ user.user.username }}</strong>?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            <a href="{% url 'user_management' %}" class="btn btn-secondary ml-2">Cancel</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

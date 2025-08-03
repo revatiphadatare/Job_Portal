@@ -1,0 +1,125 @@
+{% extends 'admin_nav.html' %}
+{% block title %}Reports{% endblock %}
+{% block body %}
+
+<style>
+    .report-section {
+        background-color: #1e2a38;
+        padding: 40px 60px;
+        min-height: calc(100vh - 70px);
+        color: white;
+    }
+
+    .report-heading {
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 40px;
+    }
+
+    .report-box {
+        background-color: #263544;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .report-box h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #0d6efd;
+    }
+
+    .report-table {
+        background-color: #263544;
+        color: white;
+    }
+
+    .report-table th, .report-table td {
+        border-color: #3a4a5a;
+        vertical-align: middle;
+    }
+
+    .table-responsive {
+        border-radius: 10px;
+        overflow-x: auto;
+    }
+
+    .text-muted {
+        color: #b0b7c3;
+    }
+</style>
+
+<div class="report-section">
+    <div class="report-heading">Admin Portal Reports</div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="report-box">
+                <h3>Total Users</h3>
+                <p>{{ total_users }}</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="report-box">
+                <h3>Total Recruiters</h3>
+                <p>{{ total_recruiters }}</p>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="text-light mt-4 mb-3">Latest User Signups</h4>
+    <div class="table-responsive">
+        <table class="table table-striped table-dark report-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Signup Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in recent_users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.user.date_joined|date:"Y-m-d" }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="4" class="text-center text-muted">No user data</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h4 class="text-light mt-5 mb-3">Latest Recruiter Registrations</h4>
+    <div class="table-responsive">
+        <table class="table table-striped table-dark report-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Company Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for recruiter in recent_recruiters %}
+                <tr>
+                    <td>{{ recruiter.id }}</td>
+                    <td>{{ recruiter.user.username }}</td>
+                    <td>{{ recruiter.user.email }}</td>
+                    <td>{{ recruiter.company_name }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="4" class="text-center text-muted">No recruiter data</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Job Portal</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap & Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+
+        .top-header {
+            background-color: transparent;
+            padding: 0;
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .top-header .row {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .logo img {
+            width: 130px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.03);
+        }
+
+        .site-title {
+            display: inline-block;
+            padding: 12px 40px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            font-size: 28px;
+            font-weight: 600;
+            color: #212529;
+        }
+
+        .site-title span:first-child {
+            color: #343a40;
+        }
+
+        .site-title span:last-child {
+            color: #0d6efd;
+            margin-left: 8px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            margin: 0 8px;
+            font-size: 24px;
+            transition: 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .fa-linkedin { color: #0077b5; }
+        .fa-twitter { color: #1da1f2; }
+        .fa-instagram { color: #e1306c; }
+        .fa-telegram { color: #0088cc; }
+
+        .navbar {
+            background-color: #1a1a40;
+            margin-top: 0;
+        }
+
+        .navbar-brand {
+            font-family: "Monotype Corsiva", cursive;
+            font-size: 30px;
+            color: white;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            color: #0d6efd;
+            text-decoration: underline;
+        }
+
+        .nav-link {
+            margin-right: 4px;
+            color: white !important;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            padding: 6px 12px;
+        }
+
+        .nav-link:hover {
+            background-color: #0d6efd;
+            color: #ffffff !important;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Header -->
+    <div class="top-header container">
+        <div class="row">
+            <div class="col-md-3 logo">
+                <img src="{% static 'images/job1.png' %}" alt="Logo" />
+            </div>
+            <div class="col-md-5">
+                <span class="site-title"><span>Online Job</span><span>Portal System</span></span>
+            </div>
+            <div class="col-md-4 social-icons">
+                <a href="https://twitter.com/internshala" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/company/internshala/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/internshala/" target="_blank"><i class="fa fa-instagram"></i></a>
+                <a href="https://t.me/internshala" target="_blank"><i class="fa fa-telegram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-sm">
+        <a class="navbar-brand pl-5 font-weight-bold" href="{% url 'index' %}">Job_Portal</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}" style="margin-left: 280px"><i class="fa fa-home mr-1"></i>Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'latest_job' %}"><i class="fa fa-users mr-1"></i>Latest Jobs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'user_login' %}"><i class="fa fa-user-plus mr-1"></i>User Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'recruiter_login' %}"><i class="fa fa-briefcase mr-1"></i>Recruiter Login</a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="{% url 'recruiter_signup' %}"><i class="fa fa-briefcase mr-1"></i>Recruiter_signup</a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'admin_login' %}"><i class="fa fa-sign-in mr-1"></i>Admin Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact_us' %}"><i class="fa fa-envelope mr-1"></i>Contact Us</a>
+            </li>
+        </ul>
+    </nav>
+
+    {% block body %}
+    <!-- Page content goes here -->
+    {% endblock %}
+</body>
+</html>

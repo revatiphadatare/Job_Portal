@@ -1,0 +1,91 @@
+{% load static %}
+{% block body %}
+{% include 'navigation.html' %}
+<script>
+    function checkpass(){
+
+        if(document.signup.password.value!=document.signup.confirm_password.value){
+            alert('Password and confirm password is not matched');
+            document.signup.confirm_password.focus();
+            return false;
+
+        }
+        return true;
+    }
+    </script>
+<style>
+     .topbased {
+        font-family: Monotype Corsiva;
+        font-size: 25px;
+        font-weight: bold;
+        margin-top: 1%;
+        color: #2c3e50;             /* A deep slate for readability and elegance */
+        background-color: #ecf0f1;  /* Soft light gray for contrast and subtlety */
+    }
+    .signup-container {
+        max-width: 600px;
+        margin: 60px auto;
+        padding: 30px;
+        border-radius: 10px;
+        background-color: #f4f6f8;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    }
+    .signup-container h2 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+        font-weight: bold;
+    }
+    .form-control {
+        margin-bottom: 15px;
+    }
+    .btn-signup {
+        width: 100%;
+        font-weight: 600;
+        background-color: #34495e;
+        color: white;
+        border: none;
+    }
+    .btn-signup:hover {
+        background-color: #2c3e50;
+    }
+</style>
+<marquee class="topbased" >Recruiter Sign_up</marquee>
+
+<div class="signup-container">
+    <h2>Create Your Recruiter Account</h2>
+    <form method="POST" name="signup" onsubmit="return checkpass();" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="full_name" class="form-control" placeholder="Full Name" required>
+        <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+        <input type="text" name="contact_number" class="form-control" placeholder="Contact Number" required>
+        <input type="text" name="company_name" class="form-control" placeholder="Company Name" required>
+        <select name="gender" class="form-control" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+        <input type="file" name="profile_picture" class="form-control" accept="image/*">
+        <input type="text" name="username" class="form-control" placeholder="Username" required>
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
+        <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
+        <button type="submit" class="btn btn-signup">Sign Up</button>
+    </form>
+</div>
+
+{% if success %}
+<script>
+    alert("Signup successful! Redirecting to login...");
+    window.location = "{% url 'recruiter_login' %}";
+</script>
+{% else %}
+{% if request.method == "POST" %}
+<script>
+    alert("Signup failed. Please check your details and try again.");
+</script>
+{% endif %}
+{% endif %}
+{% include 'footer.html' %}
+
+{% endblock %}

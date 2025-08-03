@@ -1,0 +1,123 @@
+{% load static %}
+<style>
+    .container {
+        margin-top: 20px;
+    }
+
+    .footer {
+        margin-top: 20px;
+    }
+
+    .footer-heading {
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .footer-link {
+        color: #f8f9fa;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 6px;
+        transition: 0.3s ease;
+    }
+
+    .footer-link:hover {
+        color: #0d6efd;
+        text-decoration: underline;
+    }
+
+    .footer i {
+        color: #f8f9fa;
+        margin-right: 5px;
+    }
+
+    .social-footer i {
+        color: #f8f9fa;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .social-footer i:hover {
+        transform: scale(1.15);
+        opacity: 0.8;
+    }
+
+    .newsletter-form input[type="email"] {
+        min-width: 200px;
+        border-radius: 5px;
+        margin-right: 8px;
+        padding: 6px 10px;
+        border: 1px solid #ced4da;
+    }
+
+    .newsletter-form button {
+        background-color: #0d6efd;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 16px;
+        font-weight: 500;
+        color: white;
+    }
+
+    .newsletter-form button:hover {
+        background-color: #0b5ed7;
+    }
+</style>
+
+<footer class="footer bg-dark text-white">
+    <div class="container py-4">
+        <div class="row">
+            <!-- About -->
+            <div class="col-md-3">
+                <h5 class="footer-heading">About Job Portal</h5>
+                <p>Your gateway to great careers — connecting ambitious candidates with top companies across India.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-md-3">
+                <h5 class="footer-heading">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'index' %}" class="footer-link">Home</a></li>
+                    <li><a href="{% url 'user_login' %}" class="footer-link">User Login</a></li>
+                    <li><a href="{% url 'recruiter_login' %}" class="footer-link">Recruiter Login</a></li>
+                    <li><a href="{% url 'admin_login' %}" class="footer-link">Admin Login</a></li>
+                    <li><a href="{% url 'latest_job' %}" class="footer-link">Latest Jobs</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-md-3">
+                <h5 class="footer-heading">Contact Us</h5>
+                <p><strong><i class="fa fa-map-marker"></i> Job Portal Pvt. Ltd.</strong></p>
+                <p>4th Floor, TechPark Towers,<br>
+                   Outer Ring Road, Kadubeesanahalli,<br>
+                   Bengaluru, Karnataka – 560103, India</p>
+                <p><i class="fa fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fa fa-envelope"></i> support@jobportal.in</p>
+                <p><i class="fa fa-clock-o"></i> Mon – Fri: 9:00 AM – 6:00 PM</p>
+            </div>
+
+            <!-- Social Media & Newsletter -->
+            <div class="col-md-3">
+                <h5 class="footer-heading">Follow Us</h5>
+                <div class="d-flex social-footer mb-3">
+                    <a href="https://twitter.com/internshala" target="_blank" class="me-3"><i class="fa fa-twitter fa-lg"></i></a>
+                    <a href="https://www.linkedin.com/company/internshala/" target="_blank" class="me-3"><i class="fa fa-linkedin fa-lg"></i></a>
+                    <a href="https://www.instagram.com/internshala/" target="_blank" class="me-3"><i class="fa fa-instagram fa-lg"></i></a>
+                    <a href="https://t.me/internshala" target="_blank"><i class="fa fa-telegram fa-lg"></i></a>
+                </div>
+
+                <h6 class="footer-heading">Subscribe for Updates</h6>
+                <form method="POST" action="{% url 'newsletter_signup' %}" class="newsletter-form d-flex">
+                    {% csrf_token %}
+                    <input type="email" name="email" class="form-control" placeholder="Your email" required>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+
+        <hr class="bg-light" />
+        <div class="text-center" style="font-size: 13px;">
+            &copy; {{ year }} Job Portal Pvt. Ltd. All rights reserved.
+        </div>
+    </div>
+</footer>

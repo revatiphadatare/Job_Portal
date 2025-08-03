@@ -1,0 +1,145 @@
+{% load static %}
+{% block body %}
+{% include 'navigation.html' %}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #f4f6f9;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Banner Section */
+    .banner-section {
+        margin-top: 20px;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .banner-section img.portalimage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;  /* Ensures man's head is visible */
+        border-bottom: 6px solid #0d6efd;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Placed Students Section */
+    .placed-section {
+        margin-top:20px;
+        min-height: 50vh;
+        background-color: #1e2a38;
+        padding: 60px 30px;
+        color: white;
+    }
+
+    .placed-section h1 {
+        text-align: center;
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 40px;
+        letter-spacing: 1px;
+    }
+
+    .student-card {
+        position: relative;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .student-card img {
+        width: 95%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+    }
+
+    .student-card img:hover {
+        transform: scale(1.05);
+    }
+
+    .label-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(30, 42, 56, 0.9);
+        color: white;
+        font-weight: 500;
+        font-size: 14px;
+        width: 80%;
+        height: 35px;
+        line-height: 35px;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
+
+    @media (max-width: 576px) {
+        .placed-section h1 {
+            font-size: 22px;
+        }
+
+        .student-card img {
+            height: 160px;
+        }
+
+        .label-overlay {
+            font-size: 13px;
+        }
+    }
+</style>
+
+<!-- Banner Section -->
+<div class="banner-section">
+    <img src="{% static 'images/banner.png' %}" class="portalimage" alt="Banner">
+</div>
+
+<!-- Placed Students Section -->
+<div class="placed-section">
+    <h1>-------------| OUR PLACED STUDENTS |-------------</h1>
+    <div class="row">
+        <div class="col-md-3 student-card">
+            <img src="{% static 'images/facebook.jpg' %}" alt="Facebook">
+            <div class="label-overlay">Facebook</div>
+        </div>
+        <div class="col-md-3 student-card">
+            <img src="{% static 'images/o2.jpg' %}" alt="KCS Company">
+            <div class="label-overlay">KCS Company</div>
+        </div>
+        <div class="col-md-3 student-card">
+            <img src="{% static 'images/o2.jpeg' %}" alt="HCL">
+            <div class="label-overlay">HCL</div>
+        </div>
+        <div class="col-md-3 student-card">
+            <img src="{% static 'images/o4.webp' %}" alt="Amazon">
+            <div class="label-overlay">Amazon</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 student-card">
+            <img src="{% static 'images/o4.jpeg' %}" alt="Microsoft">
+            <div class="label-overlay">Microsoft</div>
+        </div>
+        <div class="col-md-3 student-card">
+            <img src="{% static 'images/o5.jpeg' %}" alt="BNY">
+            <div class="label-overlay">BNY</div>
+        </div>
+        <div class="col-md-3 student-card">
+            <img src="{% static 'images/o6.jpeg' %}" alt="Amazon">
+            <div class="label-overlay">Amazon</div>
+        </div>
+        <div class="col-md-3 student-card">
+            <img src="{% static 'images/o7.jpeg' %}" alt="LTIMINDTREE">
+            <div class="label-overlay">LTIMINDTREE</div>
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}
